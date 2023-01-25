@@ -1,0 +1,85 @@
+{
+	// Vscode Font
+	"editor.minimap.enabled": false,
+	"editor.fontFamily": "'Victor Mono', Consolas, 'Courier New', monospace",
+	"editor.fontLigatures": true,
+	"editor.fontSize": 14,
+	"editor.fontWeight": "bold",
+	"editor.formatOnSave": true,
+	// Vscode Workbench
+	"workbench.activityBar.visible": true,
+	// Vscode Features
+	"editor.stickyTabStops": true,
+	"editor.stickyScroll.enabled": true,
+	// TypeScript
+	"typescript.validate.enable": true,
+	// Material Icon theme
+	"material-icon-theme.folders.associations": {
+		".env.development": "tune",
+		".env.development.local": "tune",
+		".env.developmentpiramide.local": "tune",
+		".env.developmentoceanica.local": "tune",
+		".env.quality": "tune",
+		".env.quality.local": "tune",
+		".env.qualitypiramide.local": "tune",
+		".env.qualityoceanica.local": "tune",
+		".env.production": "tune",
+		".env.production.local": "tune",
+		".env.productionpiramide.local": "tune",
+		".env.productionoceanica.local": "tune",
+		"domain": "stack",
+		"application": "app",
+		"infrastructure": "cobol",
+		"adapters": "buildkite",
+		"usecases": "shader",
+		"presenters": "animation",
+		"Car": "cobol",
+		"Core": "core",
+		"Home": "environment",
+		"People": "class",
+		"Pet": "stack",
+		"Travel": "other",
+		"Budget": "shader"
+	},
+	"material-icon-theme.files.associations": {},
+	// Bracket pair coloraized configuration
+	"brackets-pair-colorized-2.colors": [
+		"#fafafa",
+		"#9f51b6",
+		"#f7c244",
+		"#f07850",
+		"#9cdd29",
+		"#0098fa"
+	],
+	// Prettier
+	"prettier.enable": true,
+	"prettier.printWidth": 100,
+	"prettier.tabWidth": 4,
+	"prettier.useTabs": true,
+	"prettier.semi": true,
+	"prettier.singleQuote": true,
+	"prettier.bracketSpacing": true,
+	"prettier.arrowParens": "always",
+	"prettier.trailingComma": "es5",
+	// Peacok Configuration
+	"workbench.colorCustomizations": {
+		"activityBar.activeBackground": "#1a1a1a",
+		"activityBar.background": "#1a1a1a",
+		"activityBar.foreground": "#e7e7e7",
+		"activityBar.inactiveForeground": "#e7e7e799",
+		"activityBarBadge.background": "#606020",
+		"activityBarBadge.foreground": "#e7e7e7",
+		"commandCenter.border": "#e7e7e799",
+		"sash.hoverBorder": "#1a1a1a",
+		"statusBar.background": "#000000",
+		"statusBar.foreground": "#e7e7e7",
+		"statusBarItem.hoverBackground": "#1a1a1a",
+		"statusBarItem.remoteBackground": "#000000",
+		"statusBarItem.remoteForeground": "#e7e7e7",
+		"titleBar.activeBackground": "#000000",
+		"titleBar.activeForeground": "#e7e7e7",
+		"titleBar.inactiveBackground": "#00000099",
+		"titleBar.inactiveForeground": "#e7e7e799"
+	},
+	"peacock.color": "000"
+}
