@@ -45,14 +45,34 @@ export const DataProvider = ({ children }) => {
 	};
 
 	const geDataAuto = async () => {
-		const res = await fetchData('devuelve_poliza_auto', {
-			p_tipoid: 'V',
-			p_numid: 11604787,
-			p_dvid: '0',
-			p_numplaca: '',
-			p_serialcarroceria: '',
-		});
-		console.log(res.data.c_polizas);
+		try {
+			setOpenbd(true);
+			const res = await fetchData('devuelve_poliza_auto', {
+				p_tipoid: 'V',
+				p_numid: 11604787,
+				p_dvid: '0',
+				p_numplaca: '',
+				p_serialcarroceria: '',
+			});
+			const arrayTabla = await res.data.c_polizas.map((asegurado) => {
+				return asegurado;
+				// return {
+				// 	NOMASEG: asegurado.NOMASEG,
+				// 	CEDULA_ASEGURADO: asegurado.CEDULA_ASEGURADO,
+				// 	TOMADOR: asegurado.TOMADOR,
+				// 	DESCPARENTESCO: asegurado.DESCPARENTESCO,
+				// 	COBERTURAS: respAsegurabilidad.data.Aseg_coberturas_cur.filter(
+				// 		(cobertura) =>
+				// 			cobertura.NUMCERT === asegurado.NUMCERT &&
+				// 			cobertura.CEDULA_ASEGURADO === asegurado.CEDULA_ASEGURADO &&
+				// 			cobertura.DVIDASEG === asegurado.DVIDASEG
+				// 	),
+				// };
+			});
+			console.log(arrayTabla);
+			await setRows(arrayTabla);
+			setOpenbd(false);
+		} catch (error) {}
 	};
 
 	useEffect(() => {
