@@ -55,19 +55,20 @@ export const DataProvider = ({ children }) => {
 				p_serialcarroceria: '',
 			});
 			const arrayTabla = await res.data.c_polizas.map((asegurado) => {
-				return asegurado;
-				// return {
-				// 	NOMASEG: asegurado.NOMASEG,
-				// 	CEDULA_ASEGURADO: asegurado.CEDULA_ASEGURADO,
-				// 	TOMADOR: asegurado.TOMADOR,
-				// 	DESCPARENTESCO: asegurado.DESCPARENTESCO,
+				return {
+					NUMEROPOL: asegurado.NUMEROPOL,
+					TITULAR: asegurado.TITULAR,
+					VIGENCIA: asegurado.VIGENCIA,
+					NUMPLACA: asegurado.NUMPLACA,
+					SERIALCARROCERIA: asegurado.SERIALCARROCERIA,
+					ESTADO: asegurado.ESTADO,
 				// 	COBERTURAS: respAsegurabilidad.data.Aseg_coberturas_cur.filter(
 				// 		(cobertura) =>
 				// 			cobertura.NUMCERT === asegurado.NUMCERT &&
 				// 			cobertura.CEDULA_ASEGURADO === asegurado.CEDULA_ASEGURADO &&
 				// 			cobertura.DVIDASEG === asegurado.DVIDASEG
 				// 	),
-				// };
+				};
 			});
 			console.log(arrayTabla);
 			await setRows(arrayTabla);

@@ -37,8 +37,12 @@ export const RowTblMaster = (props) => {
 				</TableCell>
 				{/* <TableCell align="center">{row.CEDULA_ASEGURADO}</TableCell> */}
 				{/* <TableCell align="center">{row.NOMASEG}</TableCell> */}
-				<TableCell align="center">{row.TOMADOR}</TableCell>
-				<TableCell align="center">{row.DESCPARENTESCO}</TableCell>
+				<TableCell align="center">{row.NUMEROPOL}</TableCell>
+				<TableCell align="center">{row.TITULAR}</TableCell>
+				<TableCell align="center">{row.VIGENCIA}</TableCell>
+				<TableCell align="center">{row.NUMPLACA}</TableCell>
+				<TableCell align="center">{row.SERIALCARROCERIA}</TableCell>
+				<TableCell align="center">{row.ESTADO}</TableCell>
 			</TableRow>
 			<TableRow>
 				<TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>

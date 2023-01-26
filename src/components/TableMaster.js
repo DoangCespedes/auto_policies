@@ -18,13 +18,22 @@ export const TableMaster = () => {
 					<TableRow>
 						<TableCell />
 						<TableCell style={{ color: 'white' }} align="center">
+							POLIZA
+						</TableCell>
+						<TableCell style={{ color: 'white' }} align="center">
 							TITULAR
 						</TableCell>
 						<TableCell style={{ color: 'white' }} align="center">
-							CONTRATATANTE
+							VIGENCIA
 						</TableCell>
 						<TableCell style={{ color: 'white' }} align="center">
-							PARENTESCO
+							PLACA
+						</TableCell>
+						<TableCell style={{ color: 'white' }} align="center">
+							SERIAL CARROCERIA
+						</TableCell>
+						<TableCell style={{ color: 'white' }} align="center">
+							SITUACION
 						</TableCell>
 					</TableRow>
 				</TableHead>
