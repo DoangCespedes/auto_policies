@@ -31,10 +31,8 @@ const currencies = [
 ];
 
 export const DatosInputs = () => {
-	const { fetchInfo, setTipoID, tipoID, rows, geDataAuto } = useContext(DataContext);
-	// const [cedula, setCedula] = useState('');
-	// const [placa, setPlaca] = useState('');
-	// const [serial, setSerial] = useState('');
+	const { fetchInfo, setTipoID, tipoID, rows, geDataAuto, cedula, setCedula, placa, setPlaca, serial, setSerial } = useContext(DataContext);
+	
 	const { codProv } = useContext(AuthContext);
 
 	const handleChange = (event) => {
@@ -71,22 +69,22 @@ export const DatosInputs = () => {
 						id="standard-number"
 						helperText="Número de identificación"
 						type="number"
-						// value={cedula}
-						// onChange={(e) => setCedula(e.target.value)}
+						value={cedula}
+						onChange={(e) => setCedula(e.target.value)}
 					/>
 					<TextField
 						id="standard-number"
 						helperText="Numero de placa"
 						type="text"
-						// value={placa}
-						// onChange={(e) => setPlaca(e.target.value)}
+						value={placa}
+						onChange={(e) => setPlaca(e.target.value)}
 					/>
 					<TextField
 						id="standard-number"
 						helperText="Serial de carroceria"
 						type="text"
-						// value={serial}
-						// onChange={(e) => setSerial(e.target.value)}
+						value={serial}
+						onChange={(e) => setSerial(e.target.value)}
 					/>
 				</Grid>
 				<Grid item xs={12}>

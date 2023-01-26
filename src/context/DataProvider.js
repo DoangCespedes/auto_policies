@@ -9,6 +9,9 @@ export const DataProvider = ({ children }) => {
 	const [openbd, setOpenbd] = useState(false);
 	const [tipoID, setTipoID] = useState('V');
 	const [openDialog, setOpenDialog] = useState(false);
+  const [cedula, setCedula] = useState(null);
+  const [placa, setPlaca] = useState(null);
+  const [serial, setSerial] = useState(null);
 
 	const { setOpen, setMsn } = useContext(AuthContext);
 	const fetchInfo = async (tipoDocu, proveedor, ci) => {
@@ -49,10 +52,10 @@ export const DataProvider = ({ children }) => {
 			setOpenbd(true);
 			const res = await fetchData('devuelve_poliza_auto', {
 				p_tipoid: 'V',
-				p_numid: 11604787,
+				p_numid: cedula,
 				p_dvid: '0',
-				p_numplaca: '',
-				p_serialcarroceria: '',
+				p_numplaca: placa,
+				p_serialcarroceria: serial,
 			});
 			const arrayTabla = await res.data.c_polizas.map((asegurado) => {
 				return {
@@ -76,9 +79,8 @@ export const DataProvider = ({ children }) => {
 		} catch (error) {}
 	};
 
-	useEffect(() => {
-		geDataAuto();
-	}, []);
+
+	
 
 	return (
 		<DataContext.Provider
@@ -93,6 +95,12 @@ export const DataProvider = ({ children }) => {
 				setTipoID,
 				tipoID,
 				geDataAuto,
+        cedula,
+        setCedula,
+        placa,
+        setPlaca,
+        serial,
+        setSerial
 			}}
 		>
 			{children}

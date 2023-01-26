@@ -25,7 +25,7 @@ export const RowTblMaster = (props) => {
 
 	useEffect(() => {
 		setOpen(false);
-	}, [rows]);
+	}, []);
 
 	return (
 		<>
