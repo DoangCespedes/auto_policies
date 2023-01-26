@@ -35,8 +35,8 @@ export const RowTblMaster = (props) => {
 						{open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
 					</IconButton>
 				</TableCell>
-				<TableCell align="center">{row.CEDULA_ASEGURADO}</TableCell>
-				<TableCell align="center">{row.NOMASEG}</TableCell>
+				{/* <TableCell align="center">{row.CEDULA_ASEGURADO}</TableCell> */}
+				{/* <TableCell align="center">{row.NOMASEG}</TableCell> */}
 				<TableCell align="center">{row.TOMADOR}</TableCell>
 				<TableCell align="center">{row.DESCPARENTESCO}</TableCell>
 			</TableRow>
