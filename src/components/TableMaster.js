@@ -40,7 +40,6 @@ export const TableMaster = () => {
 				<TableBody>
 					{rows?.map((row, key) => (
 						<RowTblMaster key={key} row={row} />
-						// console.log(row)
 					))}
 				</TableBody>
 			</Table>

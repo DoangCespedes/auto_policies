@@ -20,12 +20,15 @@ const useRowStyles = makeStyles({
 export const RowTblMaster = (props) => {
 	const { row } = props;
 	const [open, setOpen] = React.useState(false);
-	const { rows, geDataAuto } = useContext(DataContext);
+	const { rows, geDataAuto, idepol,
+        numcert } = useContext(DataContext);
 	const classes = useRowStyles();
 
 	useEffect(() => {
+		geDataAuto();
 		setOpen(false);
 	}, []);
+
 
 	return (
 		<>

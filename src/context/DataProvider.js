@@ -12,6 +12,8 @@ export const DataProvider = ({ children }) => {
   const [cedula, setCedula] = useState(null);
   const [placa, setPlaca] = useState(null);
   const [serial, setSerial] = useState(null);
+  const [idepol, setIdepol] = useState(null)
+  const [numcert, setNumcert] = useState(null)
 
 	const { setOpen, setMsn } = useContext(AuthContext);
 	const fetchInfo = async (tipoDocu, proveedor, ci) => {
@@ -57,6 +59,12 @@ export const DataProvider = ({ children }) => {
 				p_numplaca: placa,
 				p_serialcarroceria: serial,
 			});
+    setIdepol(res.data.c_polizas[0].IDEPOL)
+    setNumcert(res.data.c_polizas[0].NUMCERT)
+      const resAuto = await fetchData('devuelve_auto', {
+        p_idepol : idepol,
+        p_numcert : numcert
+      }) 
 			const arrayTabla = await res.data.c_polizas.map((asegurado) => {
 				return {
 					NUMEROPOL: asegurado.NUMEROPOL,
@@ -65,22 +73,17 @@ export const DataProvider = ({ children }) => {
 					NUMPLACA: asegurado.NUMPLACA,
 					SERIALCARROCERIA: asegurado.SERIALCARROCERIA,
 					ESTADO: asegurado.ESTADO,
-				// 	COBERTURAS: respAsegurabilidad.data.Aseg_coberturas_cur.filter(
-				// 		(cobertura) =>
-				// 			cobertura.NUMCERT === asegurado.NUMCERT &&
-				// 			cobertura.CEDULA_ASEGURADO === asegurado.CEDULA_ASEGURADO &&
-				// 			cobertura.DVIDASEG === asegurado.DVIDASEG
-				// 	),
+				 	COBERTURAS: resAuto.data.c_vehiculo.map(cobertura =>{
+            return cobertura
+          })
 				};
 			});
-			console.log(arrayTabla);
+      console.log('ide' , idepol);
 			await setRows(arrayTabla);
 			setOpenbd(false);
 		} catch (error) {}
 	};
 
-
-	
 
 	return (
 		<DataContext.Provider
@@ -100,7 +103,9 @@ export const DataProvider = ({ children }) => {
         placa,
         setPlaca,
         serial,
-        setSerial
+        setSerial,
+        idepol,
+        numcert
 			}}
 		>
 			{children}
