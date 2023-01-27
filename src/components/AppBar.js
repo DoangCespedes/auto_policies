@@ -16,6 +16,7 @@ import { AuthContext } from "../auth/AuthContext";
 import { DataContext } from "../context/DataProvider";
 import {Link} from "react-router-dom"
 import { Button } from "@material-ui/core";
+import imgPira from '../logoPira.svg';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -66,9 +67,10 @@ function MenuAppBar(props) {
           >
             <MenuIcon />
           </IconButton> */}
-          <b>USUARIO: </b>
+          {/* <b>USUARIO: </b> */}
           <Typography variant="h7" className={classes.title}>
-            {sessionStorage.getItem("PROVEEDOR")}
+            <img src={imgPira} style={{ width: 140, marginTop: 10 }} />
+            {/* {sessionStorage.getItem("PROVEEDOR")} */}
           </Typography>
           <div>
             {/* <IconButton

@@ -11,6 +11,9 @@ export const TableAnidada = ({ coberturas }) => {
   return (
     <Table size="small" aria-label="purchases">
       <TableHead>
+          <div style={{ width: "100%", color: 'white', backgroundColor: "#f96e46" }} align="center">
+            MARCA
+          </div>
         <TableRow
           style={{
             backgroundColor: "#dcdee6",
