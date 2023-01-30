@@ -7,13 +7,13 @@ export const DataContext = createContext();
 export const DataProvider = ({ children }) => {
 	const [rows, setRows] = useState([]);
 	const [openbd, setOpenbd] = useState(false);
-	const [tipoID, setTipoID] = useState('V');
+	const [tipoID, setTipoID] = useState(null);
 	const [openDialog, setOpenDialog] = useState(false);
   const [cedula, setCedula] = useState(null);
   const [placa, setPlaca] = useState(null);
   const [serial, setSerial] = useState(null);
-  const [idepol, setIdepol] = useState(null)
-  const [numcert, setNumcert] = useState(null)
+  const [idepol, setIdepol] = useState(null);
+  const [numcert, setNumcert] = useState(null);
 
 	const { setOpen, setMsn } = useContext(AuthContext);
 	const fetchInfo = async (tipoDocu, proveedor, ci) => {
@@ -53,17 +53,21 @@ export const DataProvider = ({ children }) => {
 		try {
 			setOpenbd(true);
 			const res = await fetchData('devuelve_poliza_auto', {
-				p_tipoid: 'V',
+				p_tipoid: tipoID,
 				p_numid: cedula,
-				p_dvid: '0',
+				p_dvid: tipoID == 'V' ? '0' : null,
 				p_numplaca: placa,
 				p_serialcarroceria: serial,
 			});
-    setIdepol(res.data.c_polizas[0].IDEPOL)
-    setNumcert(res.data.c_polizas[0].NUMCERT)
+      console.log(res)
+    setIdepol(res.data.c_polizas.IDEPOL)
+    setNumcert(res.data.c_polizas.NUMCERT)
+
+  console.log(res.data.c_polizas)
+    //console.log(5,res.data.c_polizas[0].NUMCERT)
       const resAuto = await fetchData('devuelve_auto', {
         p_idepol : idepol,
-        p_numcert : numcert
+        p_numcert : numcert,
       }) 
 			const arrayTabla = await res.data.c_polizas.map((asegurado) => {
 				return {
@@ -78,7 +82,6 @@ export const DataProvider = ({ children }) => {
           })
 				};
 			});
-      console.log('ide' , idepol);
 			await setRows(arrayTabla);
 			setOpenbd(false);
 		} catch (error) {}
