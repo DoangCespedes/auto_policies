@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useContext} from "react";
 import {
   TableRow,
   TableCell,
@@ -6,8 +6,25 @@ import {
   TableHead,
   TableBody,
 } from "@material-ui/core";
+import { DataContext } from '../context/DataProvider';
+
 
 export const TableAnidada = ({ coberturas }) => {
+  const {prueba} = useContext(DataContext);
+  console.log(prueba.data.c_polizas)
+  let Jsonprueba = prueba.data.c_polizas
+  // console.log(typeof(Jsonprueba))
+let prueba2 = {0: {IDEPOL: 1697308, NUMCERT: 140, ESTATUS_POLIZA: 'ACTIVA', ESTATUS_CERT: 'prueba' },
+              1: {IDEPOL: 1697308, NUMCERT: 140, ESTATUS_POLIZA: 'ACTIVA',}}
+              
+const obj = { oldKey: 'value' };
+obj['newKey'] = obj['oldKey'];
+delete obj['oldKey'];
+console.log(obj);
+
+    console.log(Object.values(prueba2))
+    console.log(coberturas)
+
   return (
     <Table size="small" aria-label="purchases">
       <TableHead>

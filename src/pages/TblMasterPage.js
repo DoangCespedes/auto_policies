@@ -23,11 +23,11 @@ export default function TblMasterPage(props) {
       <MenuAppBar />
       <Paper elevation={5} style={{ margin: 20, padding: 30, marginTop: 40 }}>
         <Grid container justify="center" spacing={2}>
-          <Grid item xs={12} sm={3} md={2}>
+          <Grid item xs={12} sm={12} md={12}>
             <DatosInputs />
           </Grid>
 
-          <Grid item xs={12} sm={9} md={10}>
+          <Grid item xs={12} sm={12} md={12}>
             <TableMaster />
           </Grid>
         </Grid>

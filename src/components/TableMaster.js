@@ -16,7 +16,6 @@ export const TableMaster = () => {
 			<Table aria-label="collapsible table">
 				<TableHead style={{ backgroundColor: '#3f51b5' }}>
 					<TableRow>
-						<TableCell />
 						<TableCell style={{ color: 'white' }} align="center">
 							POLIZA
 						</TableCell>
@@ -30,10 +29,22 @@ export const TableMaster = () => {
 							PLACA
 						</TableCell>
 						<TableCell style={{ color: 'white' }} align="center">
-							SERIAL CARROCERIA
+							MARCA
 						</TableCell>
 						<TableCell style={{ color: 'white' }} align="center">
-							SITUACION
+							MODELO
+						</TableCell>
+						<TableCell style={{ color: 'white' }} align="center">
+							COLOR
+						</TableCell>
+						<TableCell style={{ color: 'white' }} align="center">
+							VERSION
+						</TableCell>
+						<TableCell style={{ color: 'white' }} align="center">
+							AÑO
+						</TableCell>
+						<TableCell style={{ color: 'white' }} align="center">
+							SERIAL CARROCERIA
 						</TableCell>
 					</TableRow>
 				</TableHead>

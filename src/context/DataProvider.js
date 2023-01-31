@@ -14,40 +14,41 @@ export const DataProvider = ({ children }) => {
   const [serial, setSerial] = useState(null);
   const [idepol, setIdepol] = useState(null);
   const [numcert, setNumcert] = useState(null);
+  const [prueba, setprueba] = useState([])
 
 	const { setOpen, setMsn } = useContext(AuthContext);
-	const fetchInfo = async (tipoDocu, proveedor, ci) => {
-		console.log(tipoDocu);
-		setOpenbd(true);
-		const codProveedor = await fetchData('/ObtieneCodProv', {
-			cProveedor: proveedor,
-		});
-		const respAsegurabilidad = await fetchData('/ConsultaAsegurabilidad', {
-			cCodProv: codProveedor.data[0].CODPROV,
-			cTipoId: tipoDocu,
-			nNumId: parseInt(ci),
-			cDvId: tipoDocu == 'M' ? null : '0', //"0",
-		});
+	// const fetchInfo = async (tipoDocu, proveedor, ci) => {
+	// 	console.log(tipoDocu);
+	// 	setOpenbd(true);
+	// 	const codProveedor = await fetchData('/ObtieneCodProv', {
+	// 		cProveedor: proveedor,
+	// 	});
+	// 	const respAsegurabilidad = await fetchData('/ConsultaAsegurabilidad', {
+	// 		cCodProv: codProveedor.data[0].CODPROV,
+	// 		cTipoId: tipoDocu,
+	// 		nNumId: parseInt(ci),
+	// 		cDvId: tipoDocu == 'M' ? null : '0', //"0",
+	// 	});
 
-		const arrayTabla = await respAsegurabilidad.data.Asegurados_cur.map((asegurado) => {
-			return {
-				NOMASEG: asegurado.NOMASEG,
-				CEDULA_ASEGURADO: asegurado.CEDULA_ASEGURADO,
-				TOMADOR: asegurado.TOMADOR,
-				DESCPARENTESCO: asegurado.DESCPARENTESCO,
-				COBERTURAS: respAsegurabilidad.data.Aseg_coberturas_cur.filter(
-					(cobertura) =>
-						cobertura.NUMCERT === asegurado.NUMCERT &&
-						cobertura.CEDULA_ASEGURADO === asegurado.CEDULA_ASEGURADO &&
-						cobertura.DVIDASEG === asegurado.DVIDASEG
-				),
-			};
-		});
+	// 	const arrayTabla = await respAsegurabilidad.data.Asegurados_cur.map((asegurado) => {
+	// 		return {
+	// 			NOMASEG: asegurado.NOMASEG,
+	// 			CEDULA_ASEGURADO: asegurado.CEDULA_ASEGURADO,
+	// 			TOMADOR: asegurado.TOMADOR,
+	// 			DESCPARENTESCO: asegurado.DESCPARENTESCO,
+	// 			COBERTURAS: respAsegurabilidad.data.Aseg_coberturas_cur.filter(
+	// 				(cobertura) =>
+	// 					cobertura.NUMCERT === asegurado.NUMCERT &&
+	// 					cobertura.CEDULA_ASEGURADO === asegurado.CEDULA_ASEGURADO &&
+	// 					cobertura.DVIDASEG === asegurado.DVIDASEG
+	// 			),
+	// 		};
+	// 	});
 
-		await setRows(arrayTabla);
+	// 	await setRows(arrayTabla);
 
-		setOpenbd(false);
-	};
+	// 	setOpenbd(false);
+	// };
 
 	const geDataAuto = async () => {
 		try {
@@ -68,22 +69,29 @@ export const DataProvider = ({ children }) => {
       const resAuto = await fetchData('devuelve_auto', {
         p_idepol : idepol,
         p_numcert : numcert,
-      }) 
+      })
 			const arrayTabla = await res.data.c_polizas.map((asegurado) => {
 				return {
 					NUMEROPOL: asegurado.NUMEROPOL,
 					TITULAR: asegurado.TITULAR,
 					VIGENCIA: asegurado.VIGENCIA,
 					NUMPLACA: asegurado.NUMPLACA,
+					DESCMARCA: asegurado.DESCMARCA,
+					DESCMODELO: asegurado.DESCMODELO,
+					COLOR: asegurado.COLOR,
+					DESVERSION: asegurado.DESVERSION,
+					ANOVEH: asegurado.ANOVEH,
 					SERIALCARROCERIA: asegurado.SERIALCARROCERIA,
-					ESTADO: asegurado.ESTADO,
-				 	COBERTURAS: resAuto.data.c_vehiculo.map(cobertura =>{
-            return cobertura
-          })
+		// 		 	COBERTURAS: resAuto.data.c_vehiculo.map(cobertura =>{
+        //     return cobertura
+        //   })
 				};
 			});
 			await setRows(arrayTabla);
+			console.log(arrayTabla)
+			console.log(rows)
 			setOpenbd(false);
+			setprueba(res)
 		} catch (error) {}
 	};
 
@@ -92,7 +100,7 @@ export const DataProvider = ({ children }) => {
 		<DataContext.Provider
 			value={{
 				rows,
-				fetchInfo,
+				// fetchInfo,
 				setRows,
 				setOpenbd,
 				openbd,
@@ -101,6 +109,7 @@ export const DataProvider = ({ children }) => {
 				setTipoID,
 				tipoID,
 				geDataAuto,
+				prueba,
         cedula,
         setCedula,
         placa,

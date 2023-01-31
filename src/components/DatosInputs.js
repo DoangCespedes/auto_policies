@@ -50,44 +50,61 @@ export const DatosInputs = () => {
 						<Divider />
 					</Grid>
 				</Grid>
-				<Grid item xs={12}>
-					<TextField
-						select
-						value={tipoID}
-						onChange={handleChange}
-						helperText="Tipo de Identificación"
-					>
-						{currencies.map((option) => (
-							<MenuItem key={option.value} value={option.value}>
-								{option.label}
-							</MenuItem>
-						))}
-					</TextField>
+
+				<Grid item xs={9}>
+				
+						<TextField
+							style={{
+									margin: '15px'
+								}}
+							select
+							value={tipoID}
+							onChange={handleChange}
+							helperText="Tipo de Identificación"
+						>
+							{currencies.map((option) => (
+								<MenuItem key={option.value} value={option.value}>
+									{option.label}
+								</MenuItem>
+							))}
+						</TextField>
+
+						<TextField
+							style={{
+								margin: '15px'
+							}}
+							id="standard-number"
+							helperText="Número de identificación"
+							type="number"
+							value={cedula}
+							onChange={(e) => setCedula(e.target.value)}
+						/>
+
+						<TextField
+							style={{
+									margin: '15px'
+								}}
+							id="standard-number"
+							helperText="Numero de placa"
+							type="text"
+							value={placa}
+							onChange={(e) => setPlaca(e.target.value)}
+						/>
+
+						<TextField
+							style={{
+								margin: '15px'
+							}}
+							id="standard-number"
+							helperText="Serial de carroceria"
+							type="text"
+							value={serial}
+							onChange={(e) => setSerial(e.target.value)}
+						/>
+
 				</Grid>
-				<Grid item xs={12}>
-					<TextField
-						id="standard-number"
-						helperText="Número de identificación"
-						type="number"
-						value={cedula}
-						onChange={(e) => setCedula(e.target.value)}
-					/>
-					<TextField
-						id="standard-number"
-						helperText="Numero de placa"
-						type="text"
-						value={placa}
-						onChange={(e) => setPlaca(e.target.value)}
-					/>
-					<TextField
-						id="standard-number"
-						helperText="Serial de carroceria"
-						type="text"
-						value={serial}
-						onChange={(e) => setSerial(e.target.value)}
-					/>
-				</Grid>
-				<Grid item xs={12}>
+
+				<Grid item xs={3}>
 					<Button
 						variant="outlined"
 						size="small"
